@@ -1,12 +1,35 @@
 #ifndef _ADAFRUIT_GFX_H
 #define _ADAFRUIT_GFX_H
+#include <inttypes.h>
+#include <stdio.h>
+#include <memory.h>
+#include <stdlib.h>
 
 #if ARDUINO >= 100
  #include "Arduino.h"
  #include "Print.h"
 #else
- #include "WProgram.h"
+ //#include "WProgram.h"
 #endif
+
+typedef bool boolean;
+typedef void* __FlashStringHelper;
+class Print{
+public:
+	int print(char* var){
+		return printf(var);
+	}
+};
+#define HIGH 1
+#define LOW 0
+#define OUTPUT 1
+#define INPUT 1
+static void digitalWrite(int pin, int value){};
+static void pinMode(int pin, int mode){};
+static void delay(int time){};
+static float abs(float in) {
+	return in >= 0 ? in : -in;
+}
 
 #include "gfxfont.h"
 
